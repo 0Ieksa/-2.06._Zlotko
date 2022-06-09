@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Знайомство з JS Злотко</title>
+	<script>
+		var photosCount = 5;//зміна кількості фотографій, які треба перегорнути
+		var currentPhotoIndex = 1;//змінна яка містить індекс, поточного номера фото
+		function showNextPhoto(){ //створюємо функцію для гортання фото
+			currentPhotoIndex++;//додаємо одиничку до поточної змінної із номером фото
+			if(currentPhotoIndex > photosCount) currentPhotoIndex = 1;//умова, що дозволяє по колу перемикати фото від 1 до 5, а потім знову від 1 до 5 включно
+			var elementPhoto = document.getElementById("currentPhoto");//помістити у змінну витягнутий елемент із id currentPhoto
+			elementPhoto.src = "images/photo" + currentPhotoIndex + ".jpg";//заміни номер у назві фото на поточний
+		}
+		
+		function addNextPhoto(){ //створюємо функцію для гортання фото
+			var newImage = document.createElement("img");//створюємо нову змінну для того щоб мати змогу додавати нові теги img
+			currentPhotoIndex++;//додаємо одиничку до поточної змінної із номером фото
+			if(currentPhotoIndex > photosCount) currentPhotoIndex = 1;//умова, що дозволяє по колу перемикати фото від 1 до 5, а потім знову від 1 до 5 включно
+			newImage.src = "images/photo" + currentPhotoIndex + ".jpg";//даємо ім'я яку далі будемо вставляти
+			var containerElement = document.getElementById("gallery");//помістити у змінну витягнутий елемент із id currentPhoto
+			containerElement.appendChild(newImage);
+		}
+		</script>
+</head>
+<body>
+	<div id="gallery">
+		<img id="currentPhoto" src="images/photo1.jpg" />
+	</div>
+	<button onclick="showNextPhoto()">Наступне фото</button>
+	<button onclick="addNextPhoto()">Додати фото</button>
+</body>
+</html>
